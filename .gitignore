@@ -1,0 +1,18 @@
+# 세션 훅·에이전트 상태 (기계·세션 로컬 — 커밋 금지, public repo 누출 방지)
+.claude/sessions/
+.claude/state/
+.claude/memory/
+.claude/settings.local.json
+
+# 시크릿
+.env
+*.env.*
+secrets/
+*.token
+*.pem
+
+# OS·도구
+Thumbs.db
+.DS_Store
+node_modules/
+.vercel/
