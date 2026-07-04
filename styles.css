@@ -25,6 +25,7 @@
   --dur: 500ms;
   --shadow-panel: 0 18px 36px -24px color-mix(in srgb, var(--bg) 65%, transparent);
   --grad-border: linear-gradient(var(--bg-card), var(--bg-card)) padding-box, var(--grad-aurora) border-box;
+  --warn: #ffb4b4;
 }
 html { scroll-behavior: smooth; }
 * { box-sizing: border-box; }
@@ -1099,3 +1100,18 @@ a.guide-card:hover, a.guide-card:focus-visible { border-color: transparent; back
   .starter-steps { min-height: 40rem; }
 }
 @media (max-width: 640px) { .usage-grid, .slack-grid { grid-template-columns: 1fr; } .copy-row { flex-wrap: wrap; } }
+
+/* ===== Access Gate (초대 대문, G3) ===== */
+.gate-wrap { min-height: 100svh; display: grid; place-items: center; padding: clamp(1.5rem, 6vw, 4rem); }
+.gate-box { position: relative; z-index: 2; width: min(30rem, 100%); display: flex; flex-direction: column; gap: 0.55rem; text-align: center; }
+.gate-box .hero-kicker { text-align: center; }
+.gate-box h1 { margin: 0; font-size: clamp(2.4rem, 1.5rem + 4vw, 4rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; }
+.gate-lead { margin: 0 0 1.1rem; color: var(--text-dim); }
+#gate-form { display: flex; flex-direction: column; gap: 0.8rem; }
+.gate-label { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+#gate-input { width: 100%; padding: 0.85rem 1rem; text-align: center; letter-spacing: 0.12em; font: inherit; color: var(--text); background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius); }
+.gate-btn { padding: 0.85rem 1rem; border: 1px solid transparent; border-radius: var(--radius); background: var(--grad-border); color: var(--text); font: inherit; font-weight: 700; cursor: pointer; transition: transform var(--dur) var(--ease); }
+.gate-btn:hover, .gate-btn:focus-visible { transform: translateY(-2px); }
+.gate-status { min-height: 1.4em; margin: 0.4rem 0 0; color: var(--warn); font-size: 0.9rem; }
+@keyframes gate-shake { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-8px)} 40%,80%{transform:translateX(8px)} }
+.gate-box.shake { animation: gate-shake 0.4s var(--ease); }
