@@ -377,7 +377,7 @@ function initDemo() {
 
 - [ ] **Step 1: `vercel.json`** — `{ "cleanUrls": true }`
 - [ ] **Step 2: `README.md`** — 프로젝트 한 줄 소개 + "의존성 0 정적 사이트" + 로컬 실행법 2줄 (public repo이므로 내부 경로·private 정보 없음 재확인)
-- [ ] **Step 3: 공개 안전 최종 grep** — 배포 대상 파일(index.html styles.css data.js main.js README.md)에서 개인 식별 정보(로컬 사용자명·로컬 절대경로 패턴·busan-chemi.vercel·team-vault.git) 노출 0건 확인 (author "성민혁"은 허용)
+- [ ] **Step 3: 공개 안전 최종 grep** — 배포 대상 파일(index.html styles.css data.js main.js README.md)에서 개인 식별 정보(로컬 사용자명·로컬 절대경로 패턴·타 프로젝트 배포 URL·비공개 저장소 URL) 노출 0건 확인 (author "성민혁"은 허용)
 - [ ] **Step 4: 로컬 커밋** — `git add vercel.json README.md && git commit -m "chore: 배포 설정 + README"`
 - [ ] **Step 5: ⚠️사용자 승인 요청** — "public repo 생성 + push + Vercel 배포 진행?" 승인 후에만:
 
