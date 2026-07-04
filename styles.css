@@ -28,7 +28,12 @@
 }
 html { scroll-behavior: smooth; }
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--text);
+body { margin: 0; color: var(--text);
+  /* 히어로→콘텐츠 전환부에 오로라의 여운 존 — 아래로 자연히 사라짐(V6 조화 패스) */
+  background:
+    radial-gradient(70% 46vh at 14% 92vh, color-mix(in oklab, var(--bg), var(--purple) 13%), transparent 60%),
+    radial-gradient(64% 40vh at 88% 138vh, color-mix(in oklab, var(--bg), var(--cyan) 9%), transparent 58%),
+    var(--bg);
   font-family: "Pretendard Variable", "Apple SD Gothic Neo", "Segoe UI", "Malgun Gothic", system-ui, sans-serif;
   font-size: var(--text-base); line-height: 1.7; overflow-x: hidden; }
 :focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 4px; }
@@ -771,6 +776,106 @@ body { margin: 0; background: var(--bg); color: var(--text);
   }
 }
 
+/* ===== Start / 지금 시작하기 (V5) ===== */
+#start {
+  padding: var(--space-section) clamp(1.5rem, 6vw, 4rem);
+}
+
+.start-inner {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+#start-heading {
+  margin: 0 0 0.75rem;
+  font-size: var(--text-h2);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.start-lead {
+  margin: 0 0 clamp(2.5rem, 4vw, 3.5rem);
+  max-width: 40ch;
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.3rem);
+  color: var(--text-dim);
+}
+
+.start-steps {
+  list-style: none;
+  margin: 0 0 clamp(2rem, 3vw, 3rem);
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.start-step {
+  padding: clamp(1.4rem, 2.2vw, 1.9rem);
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-panel);
+}
+
+.start-step-num {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-family: ui-monospace, "Cascadia Code", "Consolas", monospace;
+  font-size: 1.4rem;
+  font-weight: 700;
+  background: var(--grad-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.start-step-title {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.start-step-desc {
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+.start-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.75rem;
+}
+
+.start-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.7rem 1.4rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: var(--grad-border);
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform var(--dur) var(--ease);
+}
+
+.start-cta::after { content: "→"; transition: transform var(--dur) var(--ease); }
+.start-cta:hover, .start-cta:focus-visible { transform: translateY(-2px); }
+.start-cta:hover::after, .start-cta:focus-visible::after { transform: translateX(4px); }
+
+.start-repo-link {
+  color: var(--text-dim);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--violet) 40%, transparent);
+  transition: color var(--dur) var(--ease);
+}
+.start-repo-link:hover, .start-repo-link:focus-visible { color: var(--violet); }
+
 /* ===== Next / 확장 슬롯 (T6): projects 배열 렌더 ===== */
 #next {
   padding: var(--space-section) clamp(1.5rem, 6vw, 4rem);
@@ -910,6 +1015,20 @@ body { margin: 0; background: var(--bg); color: var(--text);
   color: var(--violet);
 }
 
+.footer-links {
+  margin: 0;
+}
+
+.footer-github {
+  color: var(--text-dim);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--violet) 40%, transparent);
+  transition: color var(--dur) var(--ease);
+}
+.footer-github:hover, .footer-github:focus-visible { color: var(--violet); }
+
 .footer-credit {
   margin: 0;
   font-size: 0.8rem;
@@ -919,3 +1038,52 @@ body { margin: 0; background: var(--bg); color: var(--text);
 @media (max-width: 640px) {
   .onboarding-tablist { gap: 0.5rem; }
 }
+
+/* ===== Guide (V3~V4) ===== */
+.guide-hero { position: relative; min-height: clamp(16rem, 36vh, 24rem); display: flex; flex-direction: column; justify-content: flex-end; gap: 0.6rem; padding: 1.5rem clamp(1.5rem, 6vw, 4rem) 2.5rem; overflow: hidden; isolation: isolate; border-bottom: 1px solid var(--line); }
+.guide-hero::before { content: ""; position: absolute; inset: -40%; z-index: -1; pointer-events: none; background: var(--grad-aurora); opacity: 0.25; filter: blur(96px); animation: aurora-drift-a 60s var(--ease) infinite alternate; }
+.guide-nav { margin-bottom: auto; }
+.guide-back, .guide-toc a, .guide-footer a { color: var(--text-dim); font-weight: 600; text-decoration: none; }
+.guide-back:hover, .guide-toc a:hover, .guide-footer a:hover { color: var(--text); }
+.guide-hero h1 { margin: 0; font-size: clamp(2rem, 1rem + 4vw, 3.6rem); line-height: 1.1; font-weight: 800; }
+.guide-sub { margin: 0; max-width: 52ch; color: var(--text-dim); }
+.guide-toc { display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; }
+.guide-section { max-width: 64rem; margin: 0 auto; padding: var(--space-section) clamp(1.5rem, 6vw, 4rem); }
+.guide-section h2 { margin: 0 0 0.75rem; font-size: var(--text-h2); font-weight: 800; line-height: 1.2; }
+.guide-lead { margin: 0 0 2rem; max-width: 60ch; color: var(--text-dim); }
+.stepper-progress { margin: 0 0 1.25rem; min-height: 1.2em; font-size: 0.85rem; color: var(--text-dim); }
+.stepper, .starter-steps { list-style: none; }
+.stepper, .starter-steps, .prompts-list { margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1rem; }
+.step, .starter-step, .guide-card { background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow-panel); }
+.step { display: flex; gap: 1rem; }
+.step-check { flex: 0 0 2.75rem; height: 2.75rem; border: 1px solid var(--line); border-radius: 50%; background: var(--bg-elev); color: var(--text); font: inherit; cursor: pointer; }
+.step-check[aria-pressed="true"] { background: var(--grad-aurora); border-color: transparent; }
+.step-check[aria-pressed="true"] .step-num { display: none; }
+.step-check[aria-pressed="true"]::after { content: "✓"; }
+.step--done .step-title { color: var(--text-dim); }
+.step-body { min-width: 0; flex: 1; display: flex; flex-direction: column; gap: 0.55rem; }
+.step-title, .guide-card h3, .starter-step h3 { margin: 0; font-size: 1.05rem; }
+.step-desc, .guide-card p, .starter-step p { margin: 0; color: var(--text-dim); }
+.step-link, .slack-canonical a { align-self: flex-start; color: var(--text); font-weight: 600; text-decoration-color: var(--violet); }
+.step-link:hover, .slack-canonical a:hover { text-decoration-color: var(--cyan); }
+.copy-row { display: flex; align-items: center; gap: 0.6rem; padding: 0.55rem 0.9rem; background: var(--bg); border: 1px solid var(--line); border-radius: calc(var(--radius) - 6px); }
+.copy-text, .slack-card h3 { font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace; }
+.copy-text { flex: 1; min-width: 0; overflow-x: auto; font-size: 0.88rem; color: color-mix(in oklab, var(--text), var(--violet) 25%); }
+.copy-btn, .starter-download { border: none; border-radius: calc(var(--radius) - 6px); background: var(--grad-aurora); color: var(--text); font: inherit; font-weight: 700; text-decoration: none; cursor: pointer; }
+.copy-btn { flex: 0 0 auto; padding: 0.45rem 0.9rem; font-size: 0.85rem; }
+.copy-btn:hover, .starter-download:hover, .step-check:hover { filter: brightness(1.15); }
+.copy-btn:active { transform: translateY(1px); }
+.copy-status { font-size: 0.8rem; color: var(--cyan); }
+.usage-grid, .slack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 1.25rem; }
+.guide-card, .starter-step { display: flex; flex-direction: column; gap: 0.5rem; }
+a.guide-card { color: var(--text); text-decoration: none; }
+a.guide-card:hover, a.guide-card:focus-visible { border-color: transparent; background: var(--grad-border); }
+.prompts-heading { margin: 2.5rem 0 1rem; font-size: 1.2rem; }
+.prompt-label, .slack-order { margin: 0 0 0.4rem; font-size: 0.75rem; font-weight: 700; color: var(--text-dim); }
+.slack-order { margin: 0; }
+.slack-canonical { margin: 1.5rem 0 0; }
+.starter-downloads { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 0 0 1.5rem; }
+.starter-download { display: inline-flex; padding: 0.8rem 1.4rem; }
+.starter-notice { margin: 1.5rem 0 0; padding: 1rem 1.25rem; border-left: 3px solid var(--violet); background: color-mix(in oklab, var(--bg-card), var(--violet) 6%); }
+.guide-footer { border-top: 1px solid var(--line); padding: 3rem clamp(1.5rem, 6vw, 4rem); }
+@media (max-width: 640px) { .usage-grid, .slack-grid { grid-template-columns: 1fr; } .copy-row { flex-wrap: wrap; } }

@@ -296,6 +296,35 @@ function initProjects() {
 }
 initProjects();
 
+function initStart() {
+  const leadEl = document.querySelector("#start [data-start-lead]");
+  const stepsEl = document.querySelector("#start .start-steps");
+  const ctaEl = document.querySelector("#start .start-cta");
+  const repoEl = document.querySelector("#start .start-repo-link");
+  if (!leadEl || !stepsEl || !ctaEl || !repoEl) return;
+  leadEl.textContent = TV.START.lead;
+  TV.START.steps.forEach(step => {
+    const li = document.createElement("li");
+    li.className = "start-step";
+    const num = document.createElement("span");
+    num.className = "start-step-num";
+    num.textContent = step.num;
+    const title = document.createElement("h3");
+    title.className = "start-step-title";
+    title.textContent = step.title;
+    const desc = document.createElement("p");
+    desc.className = "start-step-desc";
+    desc.textContent = step.desc;
+    li.append(num, title, desc);
+    stepsEl.appendChild(li);
+  });
+  ctaEl.href = TV.START.cta.href;
+  ctaEl.textContent = TV.START.cta.label;
+  repoEl.href = TV.START.repo.href;
+  repoEl.textContent = TV.START.repo.label;
+}
+initStart();
+
 function initFooter() {
   const stackEl = document.querySelector("[data-footer-stack]");
   const principlesEl = document.querySelector(".footer-principles");
@@ -308,5 +337,14 @@ function initFooter() {
     principlesEl.appendChild(li);
   });
   creditEl.textContent = TV.FOOTER.credit;
+  const linksEl = document.querySelector(".footer-links");
+  if (linksEl && TV.FOOTER.github) {
+    const a = document.createElement("a");
+    a.className = "footer-github";
+    a.href = TV.FOOTER.github.href;
+    a.rel = "noopener";
+    a.textContent = TV.FOOTER.github.label;
+    linksEl.appendChild(a);
+  }
 }
 initFooter();

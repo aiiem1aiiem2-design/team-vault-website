@@ -27,13 +27,24 @@ window.TV = {
     { level: "L3", time: "자율", who: "파워유저", what: "속성 직접 편집, 대시보드 필터 활용" }
   ],
   ONBOARDING_NOTE: "전원이 L2까지 갈 필요 없다 — 절반이 L1에 머물러도 시스템은 굴러간다.",
+  START: {
+    lead: "설치는 세 걸음이면 끝난다 — 나머지는 볼트가 받는다.",
+    steps: [
+      { num: "01", title: "템플릿 받기", desc: "team-vault-template을 clone하거나 ZIP으로 내려받는다" },
+      { num: "02", title: "옵시디언으로 열기", desc: "\"폴더를 보관함으로 열기\" — 그 폴더가 팀의 볼트가 된다" },
+      { num: "03", title: "인박스에 던지기", desc: "05-Inbox에 아무렇게나 — 정리는 AI와 대시보드가 한다" }
+    ],
+    cta: { label: "설치 가이드 보기", href: "guide.html" },
+    repo: { label: "GitHub에서 템플릿 보기", href: "https://github.com/aiiem1aiiem2-design/team-vault-template" }
+  },
   PROJECTS: [
-    { status: "wip", name: "Vault Starter", desc: "내 상황에 맞는 옵시디언 볼트를 처음부터 구성해주는 개인 맞춤 시작 키트", link: null }
-    /* 완성 시: { status: "live", name, desc, link } 추가 → 카드 자동 생성 */
+    { status: "live", name: "Vault Starter", desc: "내 상황에 맞는 옵시디언 볼트를 처음부터 구성해주는 개인 맞춤 시작 키트", link: "guide.html#vault-starter" }
+    /* 다음 항목: { status: wip|live, name, desc, link } 추가 → 카드 자동 생성 */
   ],
   FOOTER: {
     stack: "Obsidian(코어 Bases) · obsidian-git · GitHub · 순수 HTML/CSS/JS (의존성 0)",
     principles: ["진실은 frontmatter에", "마찰은 AI가 흡수한다", "볼트에 없으면 일어나지 않은 일"],
+    github: { label: "GitHub — team-vault-template", href: "https://github.com/aiiem1aiiem2-design/team-vault-template" },
     credit: "설계·구축 — 성민혁, 2026"
   }
 };
